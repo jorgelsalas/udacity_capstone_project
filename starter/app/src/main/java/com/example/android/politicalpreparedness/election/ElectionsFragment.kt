@@ -5,16 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.android.politicalpreparedness.database.ElectionDatabase
+import com.example.android.politicalpreparedness.database.ElectionDatabase.Companion.getInstance
 
 class ElectionsFragment: Fragment() {
 
     //TODO: Declare ViewModel
+    private lateinit var electionsViewModel: ElectionsViewModel
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
         //TODO: Add ViewModel values and create ViewModel
+        initViewModel()
 
         //TODO: Add binding values
 
@@ -24,6 +29,11 @@ class ElectionsFragment: Fragment() {
 
         //TODO: Populate recycler adapters
 
+    }
+
+    private fun initViewModel() {
+        val viewModelFactory = ElectionsViewModelFactory(getInstance(requireContext().applicationContext).electionDao)
+        electionsViewModel = ViewModelProvider(this, viewModelFactory).get(ElectionsViewModel::class.java)
     }
 
     //TODO: Refresh adapters when fragment loads
