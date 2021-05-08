@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Political Preparedness</string>
+    <string name="open_representative_website">Open representative website</string>
+    <string name="open_representative_facebook">Open representative Facebook</string>
+    <string name="open_representative_twitter">Open representative Twitter</string>
 
     <!-- TODO: Add necessary string values -->
 
