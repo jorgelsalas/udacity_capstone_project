@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.politicalpreparedness.database.ElectionDatabase
 import com.example.android.politicalpreparedness.database.ElectionDatabase.Companion.getInstance
+import com.example.android.politicalpreparedness.databinding.FragmentElectionBinding
 
 class ElectionsFragment: Fragment() {
 
@@ -22,6 +23,7 @@ class ElectionsFragment: Fragment() {
         initViewModel()
 
         //TODO: Add binding values
+        val binding = FragmentElectionBinding.inflate(layoutInflater)
 
         //TODO: Link elections to voter info
 
@@ -29,6 +31,7 @@ class ElectionsFragment: Fragment() {
 
         //TODO: Populate recycler adapters
 
+        return binding.root
     }
 
     private fun initViewModel() {

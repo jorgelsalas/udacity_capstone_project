@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.politicalpreparedness.database.ElectionDatabase
 import com.example.android.politicalpreparedness.database.ElectionDatabase.Companion.getInstance
+import com.example.android.politicalpreparedness.databinding.FragmentVoterInfoBinding
 
 class VoterInfoFragment : Fragment() {
 
@@ -19,6 +20,7 @@ class VoterInfoFragment : Fragment() {
         initViewModel()
 
         //TODO: Add binding values
+        val binding = FragmentVoterInfoBinding.inflate(inflater)
 
         //TODO: Populate voter info -- hide views without provided data.
         /**
@@ -30,7 +32,7 @@ class VoterInfoFragment : Fragment() {
 
         //TODO: Handle save button UI state
         //TODO: cont'd Handle save button clicks
-
+        return binding.root
     }
 
     private fun initViewModel() {
