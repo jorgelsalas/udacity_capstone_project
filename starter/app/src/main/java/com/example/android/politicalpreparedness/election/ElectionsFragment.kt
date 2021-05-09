@@ -25,6 +25,7 @@ class ElectionsFragment: Fragment() {
         //TODO: Add binding values
         val binding = FragmentElectionBinding.inflate(layoutInflater)
         binding.lifecycleOwner = this
+        binding.viewModel = electionsViewModel
 
         //TODO: Link elections to voter info
 
