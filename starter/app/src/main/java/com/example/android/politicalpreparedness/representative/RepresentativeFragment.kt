@@ -1,12 +1,20 @@
 package com.example.android.politicalpreparedness.representative
 
+import android.Manifest
+import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.content.Context
+import android.content.pm.PackageManager
+import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.view.*
 import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.android.politicalpreparedness.databinding.FragmentRepresentativeBinding
 import com.example.android.politicalpreparedness.network.models.Address
 import java.util.Locale
 
@@ -16,13 +24,17 @@ class DetailFragment : Fragment() {
         //TODO: Add Constant for Location request
     }
 
-    //TODO: Declare ViewModel
+    private lateinit var representativeViewModel: RepresentativeViewModel
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
+        initViewModel()
+
         //TODO: Establish bindings
+        val binding = FragmentRepresentativeBinding.inflate(inflater)
+        binding.lifecycleOwner = this
 
         //TODO: Define and assign Representative adapter
 
@@ -30,7 +42,13 @@ class DetailFragment : Fragment() {
 
         //TODO: Establish button listeners for field and location search
 
+        return binding.root
     }
+
+    private fun initViewModel() {
+        representativeViewModel = ViewModelProvider(this).get(RepresentativeViewModel::class.java)
+    }
+
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -47,7 +65,7 @@ class DetailFragment : Fragment() {
     }
 
     private fun isPermissionGranted() : Boolean {
-        //TODO: Check if permission is already granted and return (true = granted, false = denied/other)
+        return checkSelfPermission(context!!, ACCESS_FINE_LOCATION) == PERMISSION_GRANTED
     }
 
     private fun getLocation() {
