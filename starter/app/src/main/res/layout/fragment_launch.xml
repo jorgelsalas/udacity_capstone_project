@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/representativeButton"
+            android:id="@+id/upcomingButton"
             style="@style/CustomButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
             app:layout_constraintTop_toBottomOf="@id/logo" />
 
         <Button
-            android:id="@+id/upcomingButton"
+            android:id="@+id/representativeButton"
             style="@style/CustomButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/representativeButton" />
+            app:layout_constraintTop_toBottomOf="@id/upcomingButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
