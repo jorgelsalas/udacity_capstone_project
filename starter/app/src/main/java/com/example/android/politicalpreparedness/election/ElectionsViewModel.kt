@@ -16,6 +16,14 @@ class ElectionsViewModel(private val dataSource: ElectionDao): ViewModel() {
     val savedElections: LiveData<List<Election>>
         get() = _savedElections
 
+    private val _loadingUpcomingElections = MutableLiveData<Boolean>()
+    val loadingUpcomingElections: LiveData<Boolean>
+        get() = _loadingUpcomingElections
+
+    private val _loadingSavedElections = MutableLiveData<Boolean>()
+    val loadingSavedElections: LiveData<Boolean>
+        get() = _loadingSavedElections
+
     //TODO: Create val and functions to populate live data for upcoming elections from the API and saved elections from local database
     fun fetchElections() {
         fetchUpcomingElections()
