@@ -10,5 +10,11 @@
     </style>
 
     <!-- TODO: Add necessary styles -->
+    <style name="CustomButton" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="backgroundTint">@color/colorPrimaryDark</item>
+        <item name="android:layout_marginStart">@dimen/default_margin</item>
+        <item name="android:layout_marginEnd">@dimen/default_margin</item>
+    </style>
 
 </resources>

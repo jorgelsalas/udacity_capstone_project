@@ -4,6 +4,9 @@
     <string name="open_representative_website">Open representative website</string>
     <string name="open_representative_facebook">Open representative Facebook</string>
     <string name="open_representative_twitter">Open representative Twitter</string>
+    <string name="ballot_logo">Ballot logo</string>
+    <string name="upcoming_elections">Upcoming elections</string>
+    <string name="find_my_representatives">Find my representatives</string>
 
     <!-- TODO: Add necessary string values -->
 
