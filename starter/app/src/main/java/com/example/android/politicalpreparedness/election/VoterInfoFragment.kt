@@ -21,6 +21,7 @@ class VoterInfoFragment : Fragment() {
 
         //TODO: Add binding values
         val binding = FragmentVoterInfoBinding.inflate(inflater)
+        binding.lifecycleOwner = this
 
         //TODO: Populate voter info -- hide views without provided data.
         /**
