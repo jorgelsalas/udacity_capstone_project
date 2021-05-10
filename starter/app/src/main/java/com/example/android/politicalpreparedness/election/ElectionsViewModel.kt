@@ -1,10 +1,17 @@
 package com.example.android.politicalpreparedness.election
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.android.politicalpreparedness.database.ElectionDao
+import com.example.android.politicalpreparedness.network.CivicsApi
 import com.example.android.politicalpreparedness.network.models.Election
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.lang.Exception
 
 class ElectionsViewModel(private val dataSource: ElectionDao): ViewModel() {
 
@@ -35,7 +42,18 @@ class ElectionsViewModel(private val dataSource: ElectionDao): ViewModel() {
     }
 
     private fun fetchUpcomingElections() {
-
+        viewModelScope.launch {
+            _loadingUpcomingElections.value = true
+            withContext(Dispatchers.IO) {
+                try {
+                    _upcomingElections.value = CivicsApi.retrofitService.getElections()
+                }
+                catch (e: Exception) {
+                    Log.e(ElectionsViewModel::class.java.simpleName, "Unable to fetch elections: $e")
+                }
+            }
+            _loadingUpcomingElections.value = false
+        }
     }
 
     //TODO: Create functions to navigate to saved or upcoming election voter info
