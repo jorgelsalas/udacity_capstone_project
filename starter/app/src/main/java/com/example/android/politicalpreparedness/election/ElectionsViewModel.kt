@@ -32,6 +32,10 @@ class ElectionsViewModel(private val dataSource: ElectionDao): ViewModel() {
     val loadingSavedElections: LiveData<Boolean>
         get() = _loadingSavedElections
 
+    private val _navigateToElectionInformationScreen = MutableLiveData<Election>()
+    val navigateToElectionInformationScreen: LiveData<Election>
+        get() = _navigateToElectionInformationScreen
+
     //TODO: Create val and functions to populate live data for upcoming elections from the API and saved elections from local database
     fun fetchElections() {
         fetchUpcomingElections()
@@ -60,8 +64,11 @@ class ElectionsViewModel(private val dataSource: ElectionDao): ViewModel() {
         }
     }
 
-    //TODO: Create functions to navigate to saved or upcoming election voter info
     fun onElectionClicked(election: Election) {
+        _navigateToElectionInformationScreen.value = election
+    }
 
+    fun onElectionInformationScreenNavigated() {
+        _navigateToElectionInformationScreen.value = null
     }
 }
