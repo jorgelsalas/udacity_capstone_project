@@ -10,6 +10,8 @@
     <string name="saved_elections">Saved Elections</string>
     <string name="follow_election">Follow Election</string>
     <string name="un_follow_election">Unfollow Election</string>
+    <string name="election_information">Election Information</string>
+    <string name="address">Correspondence address:</string>
 
     <!-- TODO: Add necessary string values -->
 
