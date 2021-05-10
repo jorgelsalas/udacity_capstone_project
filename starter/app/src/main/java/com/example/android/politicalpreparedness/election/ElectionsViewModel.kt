@@ -48,7 +48,6 @@ class ElectionsViewModel(private val dataSource: ElectionDao): ViewModel() {
             try {
                 val electionResponse = CivicsApi.retrofitService.getElections()
                 _upcomingElections.value = electionResponse.elections
-                Log.e("TAG", electionResponse.kind)
             }
             catch (e: Exception) {
                 Log.e(ElectionsViewModel::class.java.simpleName, "Unable to fetch elections: $e")
