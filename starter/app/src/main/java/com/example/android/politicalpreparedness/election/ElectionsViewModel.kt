@@ -38,10 +38,6 @@ class ElectionsViewModel(private val dataSource: ElectionDao): ViewModel() {
         fetchSavedElections()
     }
 
-    private fun fetchSavedElections() {
-
-    }
-
     private fun fetchUpcomingElections() {
         viewModelScope.launch {
             _loadingUpcomingElections.value = true
@@ -53,6 +49,14 @@ class ElectionsViewModel(private val dataSource: ElectionDao): ViewModel() {
                 Log.e(ElectionsViewModel::class.java.simpleName, "Unable to fetch elections: $e")
             }
             _loadingUpcomingElections.value = false
+        }
+    }
+
+    private fun fetchSavedElections() {
+        viewModelScope.launch {
+            _loadingSavedElections.value = true
+            _savedElections.value = dataSource.getAllElections().value
+            _loadingSavedElections.value = false
         }
     }
 
