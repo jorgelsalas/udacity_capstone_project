@@ -12,6 +12,9 @@
     <string name="un_follow_election">Unfollow Election</string>
     <string name="election_information">Election Information</string>
     <string name="address">Correspondence address:</string>
+    <string name="voting_locations">Voting Locations</string>
+    <string name="unavailable_browser_error">Unable to open URL. Please install a web browser</string>
+    <string name="ballot_information">Ballot Information</string>
 
     <!-- TODO: Add necessary string values -->
 

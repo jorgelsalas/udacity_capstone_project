@@ -43,7 +43,6 @@
             app:layout_constraintStart_toStartOf="@id/election_date"
             android:text="@string/election_information" />
 
-        <!-- TODO: Add click binding to open web URL -->
         <!-- TODO: Add visual styling and content -->
         <TextView
             android:id="@+id/state_locations"
@@ -51,10 +50,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/state_header"
             app:layout_constraintStart_toStartOf="@id/election_date"
-            android:text="@{viewModel.voterInfo.state.get(0).electionAdministrationBody.votingLocationFinderUrl}"
-            tools:text="Voting Locations" />
+            android:onClick="@{() -> viewModel.onUrlClicked(viewModel.voterInfo.state.get(0).electionAdministrationBody.votingLocationFinderUrl)}"
+            android:text="@string/voting_locations" />
 
-        <!-- TODO: Add click binding to open web URL -->
         <!-- TODO: Add visual styling and content -->
         <TextView
             android:id="@+id/state_ballot"
@@ -62,8 +60,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/state_locations"
             app:layout_constraintStart_toStartOf="@id/election_date"
-            android:text="@{viewModel.voterInfo.state.get(0).electionAdministrationBody.ballotInfoUrl}"
-            tools:text="Ballot Information" />
+            android:onClick="@{() -> viewModel.onUrlClicked(viewModel.voterInfo.state.get(0).electionAdministrationBody.ballotInfoUrl)}"
+            android:text="@string/ballot_information" />
 
         <androidx.constraintlayout.widget.Group
             android:id="@+id/address_group"

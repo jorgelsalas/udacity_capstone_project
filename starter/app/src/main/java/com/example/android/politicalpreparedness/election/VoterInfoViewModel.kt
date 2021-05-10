@@ -1,5 +1,6 @@
 package com.example.android.politicalpreparedness.election
 
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -25,6 +26,9 @@ class VoterInfoViewModel(private val dataSource: ElectionDao) : ViewModel() {
         get() = _loadingVoterInfo
 
     //TODO: Add var and methods to support loading URLs
+    private val _navigateToUrl = MutableLiveData<Uri>()
+    val navigateToUrl: LiveData<Uri>
+        get() = _navigateToUrl
 
     //TODO: Add var and methods to save and remove elections to local database
     //TODO: cont'd -- Populate initial state of save button to reflect proper action based on election saved status
@@ -48,6 +52,14 @@ class VoterInfoViewModel(private val dataSource: ElectionDao) : ViewModel() {
 
     private fun getAddress(division: Division) : String {
         return "${division.state}, ${division.country}"
+    }
+
+    fun onUrlClicked(url: String) {
+        _navigateToUrl.value = Uri.parse(url)
+    }
+
+    fun onUrlNavigated() {
+        _navigateToUrl.value = null
     }
 
 }
