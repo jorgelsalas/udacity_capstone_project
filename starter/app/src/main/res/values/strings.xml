@@ -8,6 +8,8 @@
     <string name="upcoming_elections">Upcoming elections</string>
     <string name="find_my_representatives">Find my representatives</string>
     <string name="saved_elections">Saved Elections</string>
+    <string name="follow_election">Follow Election</string>
+    <string name="un_follow_election">Unfollow Election</string>
 
     <!-- TODO: Add necessary string values -->
 
