@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.android.politicalpreparedness.database.ElectionDao
 import com.example.android.politicalpreparedness.network.CivicsApi
 import com.example.android.politicalpreparedness.network.models.Election
+import com.example.android.politicalpreparedness.network.models.ElectionResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -44,13 +45,13 @@ class ElectionsViewModel(private val dataSource: ElectionDao): ViewModel() {
     private fun fetchUpcomingElections() {
         viewModelScope.launch {
             _loadingUpcomingElections.value = true
-            withContext(Dispatchers.IO) {
-                try {
-                    _upcomingElections.value = CivicsApi.retrofitService.getElections()
-                }
-                catch (e: Exception) {
-                    Log.e(ElectionsViewModel::class.java.simpleName, "Unable to fetch elections: $e")
-                }
+            try {
+                val electionResponse = CivicsApi.retrofitService.getElections()
+                _upcomingElections.value = electionResponse.elections
+                Log.e("TAG", electionResponse.kind)
+            }
+            catch (e: Exception) {
+                Log.e(ElectionsViewModel::class.java.simpleName, "Unable to fetch elections: $e")
             }
             _loadingUpcomingElections.value = false
         }
