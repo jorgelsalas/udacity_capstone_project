@@ -13,7 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
-import com.example.android.politicalpreparedness.R.string.unavailable_browser_error
+import com.example.android.politicalpreparedness.R
+import com.example.android.politicalpreparedness.R.string.*
 import com.example.android.politicalpreparedness.database.ElectionDatabase.Companion.getInstance
 import com.example.android.politicalpreparedness.databinding.FragmentVoterInfoBinding
 import com.example.android.politicalpreparedness.network.models.State
@@ -54,9 +55,26 @@ class VoterInfoFragment : Fragment() {
             }
         })
 
-        //TODO: Handle save button UI state
-        //TODO: cont'd Handle save button clicks
+        voterInfoViewModel.electionCurrentlySaved.observe(viewLifecycleOwner, Observer { electionCurrentlySaved ->
+            updateSaveButton(electionCurrentlySaved)
+        })
+
+        voterInfoViewModel.toggleButtonEnabled.observe(viewLifecycleOwner, Observer { toggleButtonEnabled ->
+            binding.toggleFollowButton.isEnabled = toggleButtonEnabled
+        })
+        
+        binding.toggleFollowButton.setOnClickListener {
+            voterInfoViewModel.onToggleButtonClicked()
+        }
+
         return binding.root
+    }
+
+    private fun updateSaveButton(electionCurrentlySaved: Boolean?) {
+        binding.toggleFollowButton.text = when(electionCurrentlySaved) {
+            true -> getString(un_follow_election)
+            else -> getString(follow_election)
+        }
     }
 
     private fun initViewModel() {
