@@ -59,7 +59,7 @@ class ElectionsViewModel(private val dataSource: ElectionDao): ViewModel() {
     private fun fetchSavedElections() {
         viewModelScope.launch {
             _loadingSavedElections.value = true
-            _savedElections.value = dataSource.getAllElections().value
+            _savedElections.value = dataSource.getAllElections()
             _loadingSavedElections.value = false
         }
     }

@@ -11,7 +11,7 @@ interface ElectionDao {
     suspend fun insert(election: Election)
 
     @Query("SELECT * FROM election_table")
-    fun getAllElections() : LiveData<List<Election>>
+    suspend fun getAllElections() : List<Election>
 
     @Query("SELECT * FROM election_table WHERE id = :id")
     suspend fun getElection(id: Int) : Election?
