@@ -36,7 +36,6 @@ class ElectionsViewModel(private val dataSource: ElectionDao): ViewModel() {
     val navigateToElectionInformationScreen: LiveData<Election>
         get() = _navigateToElectionInformationScreen
 
-    //TODO: Create val and functions to populate live data for upcoming elections from the API and saved elections from local database
     fun fetchElections() {
         fetchUpcomingElections()
         fetchSavedElections()

@@ -30,18 +30,12 @@ class VoterInfoFragment : Fragment() {
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        //TODO: Add ViewModel values and create ViewModel
         initViewModel()
 
-        //TODO: Add binding values
         binding = FragmentVoterInfoBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = voterInfoViewModel
 
-        //TODO: Populate voter info -- hide views without provided data.
-        /**
-        Hint: You will need to ensure proper data is provided from previous fragment.
-        */
         val args: VoterInfoFragmentArgs by navArgs()
         voterInfoViewModel.fetchVoterInfo(args.argElectionId.toLong(), args.argDivision)
         voterInfoViewModel.voterInfo.observe(viewLifecycleOwner, Observer {
