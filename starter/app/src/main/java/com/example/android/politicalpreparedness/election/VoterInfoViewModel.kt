@@ -59,14 +59,15 @@ class VoterInfoViewModel(private val dataSource: ElectionDao) : ViewModel() {
 
     fun fetchVoterInfo(electionId: Long, division: Division) {
         viewModelScope.launch {
+            _loadingVoterInfo.value = true
             try {
-                _loadingVoterInfo.value = true
                 _voterInfo.value = CivicsApi.retrofitService.getVoterInfo(getAddress(division), electionId)
                 _loadingVoterInfo.value = false
                 updateSaveButton(electionId)
             }
             catch (e: Exception) {
                 Log.e(TAG, "Unable to fetch voter info: $e")
+                _loadingVoterInfo.value = false
             }
         }
     }
