@@ -38,6 +38,8 @@ class DetailFragment : Fragment(), OnSuccessListener<Location> {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
+    private lateinit var binding: FragmentRepresentativeBinding
+
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -45,7 +47,7 @@ class DetailFragment : Fragment(), OnSuccessListener<Location> {
         initViewModel()
 
         //TODO: Establish bindings
-        val binding = FragmentRepresentativeBinding.inflate(inflater)
+        binding = FragmentRepresentativeBinding.inflate(inflater)
         binding.lifecycleOwner = this
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
@@ -155,12 +157,15 @@ class DetailFragment : Fragment(), OnSuccessListener<Location> {
     override fun onSuccess(location: Location?) {
         if (location != null) {
             val address = geoCodeLocation(location)
-            toast(address.toFormattedString())
-            //TODO: Populate fields
+            updateFieldsBasedOnAddress(address)
         }
         else {
             toast("Unable to acquire last known location")
         }
+    }
+
+    private fun updateFieldsBasedOnAddress(address: Address) {
+        binding.address = address
     }
 
     private fun geoCodeLocation(location: Location): Address {
