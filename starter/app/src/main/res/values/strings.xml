@@ -22,6 +22,8 @@
     <string name="address_line_2">Address Line 2</string>
     <string name="city">City</string>
     <string name="zip">Zip</string>
+    <string name="location_required">Location permission required</string>
+    <string name="location_on_required">Location must be turned on in order to infer address</string>
 
     <!-- TODO: Add necessary string values -->
 
