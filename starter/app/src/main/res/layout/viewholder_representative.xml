@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -14,28 +15,77 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:onClick="@{() -> clickListener.onClick(representative)}">
 
         <ImageView
             android:id="@+id/representativePhoto"
             android:layout_width="72dp"
             android:layout_height="72dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_profile"
+            app:profileImage="@{representative.official.photoUrl}"
+            tools:src="@drawable/ic_profile"
             android:contentDescription="@{representative.official.name}" />
 
+        <TextView
+            android:id="@+id/representative_position"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{representative.office.name}"
+
+            app:layout_constraintStart_toEndOf="@id/representativePhoto"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="President of the United States"
+            />
+
+
+        <TextView
+            android:id="@+id/representative_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{representative.official.name}"
+
+            app:layout_constraintStart_toEndOf="@id/representativePhoto"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@id/representative_position"
+            tools:text="Donald J. Trump"
+            />
+
+        <TextView
+            android:id="@+id/representative_party"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{representative.official.party}"
+
+            app:layout_constraintStart_toEndOf="@id/representativePhoto"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@id/representative_name"
+            tools:text="Republican Party"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/icons_guideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="130dp"/>
 
         <ImageView
             android:id="@+id/wwwIcon"
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/icons_guideline"
+            app:layout_constraintEnd_toStartOf="@id/facebookIcon"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/representative_position"
             android:src="@drawable/ic_www"
             android:contentDescription="@string/open_representative_website" />
 
@@ -43,10 +93,10 @@
             android:id="@+id/facebookIcon"
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/wwwIcon"
+            app:layout_constraintEnd_toStartOf="@id/twitterIcon"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/representative_position"
             android:src="@drawable/ic_facebook"
             android:contentDescription="@string/open_representative_facebook" />
 
@@ -55,10 +105,10 @@
             android:id="@+id/twitterIcon"
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/facebookIcon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/representative_position"
             android:src="@drawable/ic_twitter"
             android:contentDescription="@string/open_representative_twitter" />
 

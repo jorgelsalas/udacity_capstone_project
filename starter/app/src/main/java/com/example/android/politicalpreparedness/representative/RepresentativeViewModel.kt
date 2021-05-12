@@ -28,6 +28,7 @@ class RepresentativeViewModel: ViewModel() {
             _loadingRepresentatives.value = true
 
             try {
+                // TODO: Use more specific address
                 val (offices, officials) = CivicsApi.retrofitService.getRepresentatives("${address.state}, ${address.zip}")
                 _representatives.value = offices.flatMap { office -> office.getRepresentatives(officials) }
             }
