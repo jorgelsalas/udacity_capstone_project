@@ -14,6 +14,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.politicalpreparedness.R.string.location_on_required
 import com.example.android.politicalpreparedness.R.string.location_required
@@ -46,20 +47,25 @@ class DetailFragment : Fragment(), OnSuccessListener<Location> {
 
         initViewModel()
 
-        //TODO: Establish bindings
         binding = FragmentRepresentativeBinding.inflate(inflater)
         binding.lifecycleOwner = this
+        binding.viewModel = representativeViewModel
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
 
-        //TODO: Define and assign Representative adapter
-        binding.representativesRecycler.adapter = RepresentativeListAdapter()
+        val representativeListAdapter = RepresentativeListAdapter()
+        binding.representativesRecycler.adapter = representativeListAdapter
 
-        //TODO: Populate Representative adapter
+        representativeViewModel.representatives.observe(viewLifecycleOwner, Observer { representatives ->
+            representatives?.let { representativeListAdapter.submitList(representatives) }
+        })
 
-        //TODO: Establish button listeners for field and location search
         binding.buttonLocation.setOnClickListener {
             onUseMyLocationButtonClicked()
+        }
+
+        binding.buttonSearch.setOnClickListener {
+            onFindMyRepresentativesClicked(binding.address)
         }
 
         return binding.root
@@ -76,6 +82,20 @@ class DetailFragment : Fragment(), OnSuccessListener<Location> {
         else {
             requestLocationPermission()
         }
+    }
+
+    private fun onFindMyRepresentativesClicked(address: Address?) {
+        if (address != null && isValid(address)) {
+            representativeViewModel.fetchRepresentatives(address)
+        }
+        else {
+            toast("Please fill out the address fields")
+        }
+    }
+
+    private fun isValid(address: Address): Boolean {
+        return address.line1.isNotEmpty() && address.city.isNotEmpty()
+                && address.state.isNotEmpty() && address.zip.isNotEmpty()
     }
 
 

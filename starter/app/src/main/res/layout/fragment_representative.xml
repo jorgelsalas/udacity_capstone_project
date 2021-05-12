@@ -7,6 +7,10 @@
         <variable
             name="address"
             type="com.example.android.politicalpreparedness.network.models.Address" />
+
+        <variable
+            name="viewModel"
+            type="com.example.android.politicalpreparedness.representative.RepresentativeViewModel" />
     </data>
 
     <!-- TODO: Add motion scene to hide form on vertical scroll. -->
@@ -115,7 +119,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_location" />
 
-        <!-- TODO: Add Representatives RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/representatives_recycler"
             android:layout_width="0dp"
@@ -125,6 +128,17 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ProgressBar
+            android:id="@+id/representatives_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintTop_toBottomOf="@id/representative_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:loadingStatus="@{viewModel.loadingRepresentatives}" />
 
         <!-- TODO: Add visual styling and content -->
         <TextView
