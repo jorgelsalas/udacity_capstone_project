@@ -16,7 +16,6 @@ import com.example.android.politicalpreparedness.election.adapter.ElectionListen
 
 class ElectionsFragment: Fragment() {
 
-    //TODO: Declare ViewModel
     private lateinit var electionsViewModel: ElectionsViewModel
 
     private lateinit var binding: FragmentElectionBinding
@@ -25,15 +24,12 @@ class ElectionsFragment: Fragment() {
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        //TODO: Add ViewModel values and create ViewModel
         initViewModel()
 
-        //TODO: Add binding values
         binding = FragmentElectionBinding.inflate(layoutInflater)
         binding.lifecycleOwner = this
         binding.viewModel = electionsViewModel
 
-        //TODO: Link elections to voter info
         val electionClickListener = ElectionListener { election -> electionsViewModel.onElectionClicked(election) }
         electionsViewModel.navigateToElectionInformationScreen.observe(viewLifecycleOwner, Observer {
             it?.let {
@@ -42,13 +38,11 @@ class ElectionsFragment: Fragment() {
             }
         })
 
-        //TODO: Initiate recycler adapters
         val upcomingAdapter = ElectionListAdapter(electionClickListener)
         val savedAdapter = ElectionListAdapter(electionClickListener)
         binding.upcomingElectionsRecycler.adapter = upcomingAdapter
         binding.savedElectionsRecycler.adapter = savedAdapter
 
-        //TODO: Populate recycler adapters
         electionsViewModel.upcomingElections.observe(viewLifecycleOwner, Observer { elections ->
             elections?.let { upcomingAdapter.submitList(elections) }
         })
@@ -65,7 +59,6 @@ class ElectionsFragment: Fragment() {
         electionsViewModel = ViewModelProvider(this, viewModelFactory).get(ElectionsViewModel::class.java)
     }
 
-    //TODO: Refresh adapters when fragment loads
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         electionsViewModel.fetchElections()

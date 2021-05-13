@@ -19,7 +19,6 @@ fun fetchImage(view: ImageView, src: String?) {
             .circleCrop()
             .placeholder(R.drawable.ic_profile)
             .into(view)
-        //TODO: Add Glide call to load image and circle crop - user ic_profile as a placeholder and for errors.
     }
 }
 
