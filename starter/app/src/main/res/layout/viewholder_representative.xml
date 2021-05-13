@@ -16,7 +16,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_margin="8dp"
         android:onClick="@{() -> clickListener.onClick(representative)}">
 
         <ImageView
@@ -36,10 +36,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{representative.office.name}"
-
+            android:layout_marginStart="@dimen/representative_text_margin"
             app:layout_constraintStart_toEndOf="@id/representativePhoto"
             app:layout_constraintEnd_toEndOf="parent"
-
+            app:layout_constraintBottom_toTopOf="@id/representative_name"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="President of the United States"
             />
@@ -50,10 +50,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{representative.official.name}"
-
+            android:layout_marginStart="@dimen/representative_text_margin"
             app:layout_constraintStart_toEndOf="@id/representativePhoto"
             app:layout_constraintEnd_toEndOf="parent"
-
+            app:layout_constraintBottom_toTopOf="@id/representative_party"
             app:layout_constraintTop_toBottomOf="@id/representative_position"
             tools:text="Donald J. Trump"
             />
@@ -63,10 +63,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{representative.official.party}"
-
+            android:layout_marginStart="@dimen/representative_text_margin"
             app:layout_constraintStart_toEndOf="@id/representativePhoto"
             app:layout_constraintEnd_toEndOf="parent"
-
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/representative_name"
             tools:text="Republican Party"
             />
