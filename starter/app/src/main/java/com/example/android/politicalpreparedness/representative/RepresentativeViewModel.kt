@@ -12,8 +12,6 @@ import kotlinx.coroutines.launch
 
 class RepresentativeViewModel: ViewModel() {
 
-    //TODO: Establish live data for representatives and address
-
     private val _representatives = MutableLiveData<List<Representative>>()
     val representatives: LiveData<List<Representative>>
         get() = _representatives
@@ -21,6 +19,10 @@ class RepresentativeViewModel: ViewModel() {
     private val _loadingRepresentatives = MutableLiveData<Boolean>()
     val loadingRepresentatives: LiveData<Boolean>
         get() = _loadingRepresentatives
+
+    private val _address = MutableLiveData<Address>()
+    val address: LiveData<Address>
+        get() = _address
 
     fun fetchRepresentatives(address: Address) {
         viewModelScope.launch {
@@ -46,5 +48,9 @@ class RepresentativeViewModel: ViewModel() {
             //return "$line1, $line2, $city, $state, $zip"
             return "$state, $zip"
         }
+    }
+
+    fun updateAddress(address: Address) {
+        _address.value = address
     }
 }

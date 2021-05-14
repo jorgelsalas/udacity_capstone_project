@@ -60,6 +60,10 @@ class DetailFragment : Fragment(), OnSuccessListener<Location> {
             representatives?.let { representativeListAdapter.submitList(representatives) }
         })
 
+        representativeViewModel.address.observe(viewLifecycleOwner, Observer {
+            binding.address = it
+        })
+
         binding.buttonLocation.setOnClickListener {
             onUseMyLocationButtonClicked()
         }
@@ -185,7 +189,7 @@ class DetailFragment : Fragment(), OnSuccessListener<Location> {
     }
 
     private fun updateFieldsBasedOnAddress(address: Address) {
-        binding.address = address
+        representativeViewModel.updateAddress(address)
     }
 
     private fun geoCodeLocation(location: Location): Address {
