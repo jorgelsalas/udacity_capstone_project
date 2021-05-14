@@ -50,6 +50,7 @@ class DetailFragment : Fragment(), OnSuccessListener<Location> {
         binding = FragmentRepresentativeBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = representativeViewModel
+        binding.address = representativeViewModel.address.value
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
 
@@ -69,7 +70,7 @@ class DetailFragment : Fragment(), OnSuccessListener<Location> {
         }
 
         binding.buttonSearch.setOnClickListener {
-            onFindMyRepresentativesClicked(binding.address)
+            onFindMyRepresentativesClicked()
         }
 
         return binding.root
@@ -88,18 +89,20 @@ class DetailFragment : Fragment(), OnSuccessListener<Location> {
         }
     }
 
-    private fun onFindMyRepresentativesClicked(address: Address?) {
-        if (address != null && isValid(address)) {
-            representativeViewModel.fetchRepresentatives(address)
-        }
-        else {
-            toast("Please fill out the address fields")
-        }
-    }
+    private fun onFindMyRepresentativesClicked() {
+        with(binding) {
+            val address = representativeViewModel.getAddressFromFields(addressLine1.text.toString(),
+                addressLine2.text.toString(), city.text.toString(), state.selectedItem.toString(),
+                zip.text.toString())
 
-    private fun isValid(address: Address): Boolean {
-        return address.line1.isNotEmpty() && address.city.isNotEmpty()
-                && address.state.isNotEmpty() && address.zip.isNotEmpty()
+            if (address != null) {
+                representativeViewModel.updateAddress(address)
+                representativeViewModel.fetchRepresentatives(address)
+            }
+            else {
+                toast("Please fill out the address fields")
+            }
+        }
     }
 
 

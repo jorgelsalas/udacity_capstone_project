@@ -29,7 +29,7 @@ class RepresentativeViewModel: ViewModel() {
             _loadingRepresentatives.value = true
 
             try {
-                val (offices, officials) = CivicsApi.retrofitService.getRepresentatives(getAddressFromFields(address))
+                val (offices, officials) = CivicsApi.retrofitService.getRepresentatives(getAddressForApiRequest(address))
                 _representatives.value = offices.flatMap { office -> office.getRepresentatives(officials) }
             }
             catch (e: Exception) {
@@ -42,8 +42,22 @@ class RepresentativeViewModel: ViewModel() {
 
     //TODO: Create function get address from geo location
 
-    //TODO: Create function to get address from individual fields
-    private fun getAddressFromFields(address: Address): String {
+    fun getAddressFromFields(line1: String, line2: String?, city: String, state: String, zip: String): Address? {
+        val newAddress = Address(line1, line2, city, state, zip)
+
+        return if (isValid(newAddress)) {
+            newAddress
+        } else {
+            null
+        }
+    }
+
+    private fun isValid(address: Address): Boolean {
+        return address.line1.isNotEmpty() && address.city.isNotEmpty()
+                && address.state.isNotEmpty() && address.zip.isNotEmpty()
+    }
+
+    private fun getAddressForApiRequest(address: Address): String {
         with(address) {
             //return "$line1, $line2, $city, $state, $zip"
             return "$state, $zip"
