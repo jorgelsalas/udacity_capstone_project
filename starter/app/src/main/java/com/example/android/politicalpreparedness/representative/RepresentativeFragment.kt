@@ -81,6 +81,7 @@ class DetailFragment : Fragment(), OnSuccessListener<Location> {
     }
 
     private fun onUseMyLocationButtonClicked() {
+        hideKeyboard()
         if (isPermissionGranted()) {
             verifyUserHasLocationEnabled()
         }
@@ -90,6 +91,7 @@ class DetailFragment : Fragment(), OnSuccessListener<Location> {
     }
 
     private fun onFindMyRepresentativesClicked() {
+        hideKeyboard()
         with(binding) {
             val address = representativeViewModel.getAddressFromFields(addressLine1.text.toString(),
                 addressLine2.text.toString(), city.text.toString(), state.selectedItem.toString(),
