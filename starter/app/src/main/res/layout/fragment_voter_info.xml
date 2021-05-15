@@ -21,42 +21,49 @@
             android:padding="@dimen/default_padding"
             android:singleLine="true"
             app:title="@{viewModel.voterInfo.election.name}"
+            tools:title="California State House Election"
+            android:background="?attr/colorPrimaryDark"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- TODO: Add visual styling -->
         <TextView
             android:id="@+id/election_date"
+            style="@style/BodyText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_padding"
+            android:layout_margin="@dimen/small_margin"
             app:layout_constraintTop_toBottomOf="@id/election_name"
             android:text="@{viewModel.voterInfo.election.electionDay.toString()}"
-            tools:text="12 November 2055" />
+            tools:text="12 November 2055"
+            android:textStyle="italic|bold"/>
 
-        <!-- TODO: Add visual styling and content -->
         <TextView
             android:id="@+id/state_header"
+            style="@style/TitleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="@dimen/voter_info_section_top_padding"
             app:layout_constraintTop_toBottomOf="@id/election_date"
             app:layout_constraintStart_toStartOf="@id/election_date"
             android:text="@string/election_information" />
 
-        <!-- TODO: Add visual styling and content -->
         <TextView
             android:id="@+id/state_locations"
+            style="@style/ClickableBodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="@dimen/voter_info_item_top_padding"
             app:layout_constraintTop_toBottomOf="@id/state_header"
             app:layout_constraintStart_toStartOf="@id/election_date"
             android:onClick="@{() -> viewModel.onUrlClicked(viewModel.voterInfo.state.get(0).electionAdministrationBody.votingLocationFinderUrl)}"
             android:text="@string/voting_locations" />
 
-        <!-- TODO: Add visual styling and content -->
         <TextView
             android:id="@+id/state_ballot"
+            style="@style/ClickableBodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="@dimen/voter_info_item_top_padding"
             app:layout_constraintTop_toBottomOf="@id/state_locations"
             app:layout_constraintStart_toStartOf="@id/election_date"
             android:onClick="@{() -> viewModel.onUrlClicked(viewModel.voterInfo.state.get(0).electionAdministrationBody.ballotInfoUrl)}"
@@ -68,26 +75,27 @@
             android:layout_height="wrap_content"
             app:constraint_referenced_ids="state_correspondence_header,address" />
 
-        <!-- TODO: Add visual styling and content -->
         <TextView
             android:id="@+id/state_correspondence_header"
+            style="@style/TitleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="@dimen/voter_info_section_top_padding"
             app:layout_constraintTop_toBottomOf="@id/state_ballot"
             app:layout_constraintStart_toStartOf="@id/election_date"
             android:text="@string/address"/>
 
-        <!-- TODO: Add data binding -->
         <TextView
             android:id="@+id/address"
+            style="@style/BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="@dimen/voter_info_item_top_padding"
             app:layout_constraintTop_toBottomOf="@id/state_correspondence_header"
             app:layout_constraintStart_toStartOf="@id/election_date"
             android:text="@{viewModel.voterInfo.state.get(0).electionAdministrationBody.correspondenceAddress.toFormattedString()}"
             tools:text="Sample Address" />
 
-        <!-- TODO: Add button to save election to Room -->
         <Button
             android:id="@+id/toggle_follow_button"
             style="@style/CustomButton"

@@ -34,4 +34,8 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="ClickableBodyText" parent="BodyText">
+        <item name="android:textColor">#0000EE</item>
+    </style>
+
 </resources>
