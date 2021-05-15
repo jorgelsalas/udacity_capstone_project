@@ -5,23 +5,34 @@
 
     <Transition
         app:constraintSetStart="@+id/start"
-        app:constraintSetEnd="@+id/end"
-        app:autoTransition="animateToEnd"
-        >
+        app:constraintSetEnd="@+id/end">
+
+        <OnSwipe
+            app:dragDirection="dragUp"
+            app:touchAnchorId="@+id/representatives_recycler" />
 
     </Transition>
 
+
     <ConstraintSet android:id="@+id/start">
 
-
+        <Constraint
+            android:id="@+id/search_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/address_line_1"/>
 
         <Constraint
             android:id="@+id/representative_title"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_location"
+            app:layout_constraintBottom_toTopOf="@id/representatives_recycler"
             />
 
     </ConstraintSet>
@@ -29,9 +40,17 @@
     <ConstraintSet android:id="@+id/end">
 
         <Constraint
+            android:id="@+id/search_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="parent"/>
+
+        <Constraint
             android:id="@+id/representative_title"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
