@@ -59,8 +59,7 @@ class RepresentativeViewModel: ViewModel() {
 
     private fun getAddressForApiRequest(address: Address): String {
         with(address) {
-            //return "$line1, $line2, $city, $state, $zip"
-            return "$state, $zip"
+            return "$line1 $line2, $city, $state, $zip"
         }
     }
 
