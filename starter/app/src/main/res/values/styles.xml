@@ -17,4 +17,21 @@
         <item name="android:layout_marginEnd">@dimen/default_margin</item>
     </style>
 
+    <style name="FragmentHeaderText">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/gray50</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TitleText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/gray50</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="BodyText">
+        <item name="android:textColor">@color/gray50</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
 </resources>

@@ -21,6 +21,7 @@
 
         <TextView
             android:id="@+id/election_name"
+            style="@style/TitleText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{election.name}"
@@ -33,6 +34,7 @@
 
         <TextView
             android:id="@+id/election_date"
+            style="@style/BodyText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{election.electionDay.toString()}"

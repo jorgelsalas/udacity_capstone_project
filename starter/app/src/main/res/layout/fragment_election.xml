@@ -14,14 +14,30 @@
         android:layout_height="match_parent"
         tools:context="com.example.android.politicalpreparedness.MainActivity">
 
-        <!-- TODO: Add styling and bindings -->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/startMargin"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/default_margin" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/endMargin"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/default_margin" />
+
         <TextView
             android:id="@+id/upcoming_elections_header"
-            android:layout_width="wrap_content"
+            style="@style/FragmentHeaderText"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/upcoming_elections"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="@id/startMargin"
+            app:layout_constraintEnd_toEndOf="@id/endMargin"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/upcoming_elections_recycler"
@@ -30,8 +46,8 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/upcoming_elections_header"
             app:layout_constraintBottom_toBottomOf="@id/recycler_separator"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintStart_toStartOf="@id/startMargin"
+            app:layout_constraintEnd_toEndOf="@id/endMargin"/>
 
         <ProgressBar
             android:id="@+id/upcoming_elections_progress_bar"
@@ -53,11 +69,13 @@
 
         <TextView
             android:id="@+id/saved_elections_header"
-            android:layout_width="wrap_content"
+            style="@style/FragmentHeaderText"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/saved_elections"
             app:layout_constraintTop_toBottomOf="@id/recycler_separator"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="@id/startMargin"
+            app:layout_constraintEnd_toEndOf="@id/endMargin" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/saved_elections_recycler"
@@ -66,8 +84,8 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/saved_elections_header"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintStart_toStartOf="@id/startMargin"
+            app:layout_constraintEnd_toEndOf="@id/endMargin"/>
 
         <ProgressBar
             android:id="@+id/saved_elections_progress_bar"
