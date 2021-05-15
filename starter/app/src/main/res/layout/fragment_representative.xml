@@ -14,7 +14,6 @@
             type="com.example.android.politicalpreparedness.representative.RepresentativeViewModel" />
     </data>
 
-    <!-- TODO: Add motion scene to hide form on vertical scroll. -->
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent"
@@ -24,9 +23,8 @@
             android:id="@+id/search_title"
             style="@style/FragmentHeaderText"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:text="@string/representative_search"
-            />
+            android:layout_height="wrap_content"
+            android:text="@string/representative_search" />
 
         <EditText
             android:id="@+id/address_line_1"
@@ -36,10 +34,8 @@
             android:inputType="textPostalAddress"
             android:hint="@string/address_line_1"
             android:text="@{address.line1}"
-            tools:text="Amphitheatre Parkway"
-             />
+            tools:text="Amphitheatre Parkway" />
 
-        <!-- TODO: Add visual styling and content -->
         <EditText
             android:id="@+id/address_line_2"
             android:layout_width="0dp"
@@ -48,11 +44,8 @@
             android:inputType="textPostalAddress"
             android:hint="@string/address_line_2"
             android:text="@{address.line2}"
-            tools:text="1600"
+            tools:text="1600" />
 
-            />
-
-        <!-- TODO: Add visual styling and content -->
         <EditText
             android:id="@+id/city"
             android:layout_width="0dp"
@@ -60,14 +53,8 @@
             android:autofillHints=""
             android:inputType="textPostalAddress"
             android:hint="@string/city"
-            android:text="@{address.city}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/state"
-            app:layout_constraintTop_toBottomOf="@id/address_line_2"
-            app:layout_constraintBottom_toTopOf="@id/zip"
-            />
+            android:text="@{address.city}" />
 
-        <!-- TODO: Add visual styling and content -->
         <Spinner
             android:id="@+id/state"
             android:layout_width="0dp"
@@ -81,7 +68,6 @@
             app:layout_constraintTop_toTopOf="@id/city"
             app:layout_constraintBottom_toBottomOf="@id/city"/>
 
-        <!-- TODO: Add visual styling and content -->
         <EditText
             android:id="@+id/zip"
             android:layout_width="0dp"
@@ -90,31 +76,21 @@
             android:inputType="number"
             android:maxLength="5"
             android:hint="@string/zip"
-            android:text="@{address.zip}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/city"
-            app:layout_constraintTop_toBottomOf="@id/city"
-            app:layout_constraintBottom_toTopOf="@id/button_search"
-            />
+            android:text="@{address.zip}" />
 
         <Button
             android:id="@+id/button_search"
             style="@style/CustomButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/find_my_representatives"
-            app:layout_constraintTop_toBottomOf="@id/zip"
-            app:layout_constraintBottom_toTopOf="@id/button_location"
-            />
+            android:text="@string/find_my_representatives" />
 
         <Button
             android:id="@+id/button_location"
             style="@style/CustomButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/use_my_location"
-            app:layout_constraintTop_toBottomOf="@id/button_search"
-            app:layout_constraintBottom_toTopOf="@id/representative_title" />
+            android:text="@string/use_my_location" />
 
         <TextView
             android:id="@+id/representative_title"

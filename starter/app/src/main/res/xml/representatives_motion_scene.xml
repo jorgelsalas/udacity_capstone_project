@@ -22,8 +22,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <Constraint
             android:id="@+id/address_line_1"
@@ -50,19 +49,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/state"
             app:layout_constraintTop_toBottomOf="@id/address_line_2"
-            app:layout_constraintBottom_toTopOf="@id/zip"
-            />
+            app:layout_constraintBottom_toTopOf="@id/zip" />
 
         <Constraint
             android:id="@+id/zip"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@id/city"
             app:layout_constraintTop_toBottomOf="@id/city"
-            app:layout_constraintBottom_toTopOf="@id/button_search"
-            />
+            app:layout_constraintBottom_toTopOf="@id/button_search" />
 
         <Constraint
             android:id="@+id/button_search"
@@ -70,15 +66,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/zip"
-            app:layout_constraintBottom_toTopOf="@id/button_location"
-            />
+            app:layout_constraintBottom_toTopOf="@id/button_location" />
 
         <Constraint
             android:id="@+id/button_location"
             style="@style/CustomButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             app:layout_constraintTop_toBottomOf="@id/button_search"
             app:layout_constraintBottom_toTopOf="@id/representative_title" />
 
@@ -89,8 +83,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_location"
-            app:layout_constraintBottom_toTopOf="@id/representatives_recycler"
-            />
+            app:layout_constraintBottom_toTopOf="@id/representatives_recycler" />
 
     </ConstraintSet>
 
@@ -104,14 +97,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/address_line_1"/>
 
-
         <Constraint
             android:id="@+id/address_line_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-
             app:layout_constraintBottom_toTopOf="@id/address_line_2"/>
 
         <Constraint
@@ -120,7 +111,6 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-
             app:layout_constraintBottom_toTopOf="@id/city" />
 
         <Constraint
@@ -129,36 +119,28 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/state"
-
-            app:layout_constraintBottom_toTopOf="@id/zip"
-            />
+            app:layout_constraintBottom_toTopOf="@id/zip" />
 
         <Constraint
             android:id="@+id/zip"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@id/city"
-            app:layout_constraintBottom_toTopOf="@id/button_search"
-            />
+            app:layout_constraintBottom_toTopOf="@id/button_search" />
 
         <Constraint
             android:id="@+id/button_search"
             style="@style/CustomButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            app:layout_constraintBottom_toTopOf="@+id/button_location"
-            />
+            app:layout_constraintBottom_toTopOf="@+id/button_location" />
 
         <Constraint
             android:id="@+id/button_location"
             style="@style/CustomButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-
             app:layout_constraintBottom_toTopOf="@id/representative_title" />
 
         <Constraint
@@ -168,10 +150,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/representatives_recycler"
-            />
-
-
+            app:layout_constraintBottom_toTopOf="@id/representatives_recycler" />
 
     </ConstraintSet>
 
