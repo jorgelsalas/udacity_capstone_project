@@ -26,7 +26,6 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:text="@string/representative_search"
-
             />
 
         <EditText
@@ -38,10 +37,7 @@
             android:hint="@string/address_line_1"
             android:text="@{address.line1}"
             tools:text="Amphitheatre Parkway"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/search_title"
-            app:layout_constraintBottom_toTopOf="@id/address_line_2" />
+             />
 
         <!-- TODO: Add visual styling and content -->
         <EditText
@@ -53,10 +49,7 @@
             android:hint="@string/address_line_2"
             android:text="@{address.line2}"
             tools:text="1600"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/address_line_1"
-            app:layout_constraintBottom_toTopOf="@id/city"
+
             />
 
         <!-- TODO: Add visual styling and content -->
