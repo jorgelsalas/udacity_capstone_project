@@ -9,7 +9,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!-- TODO: Add necessary styles -->
     <style name="CustomButton" parent="Widget.AppCompat.Button">
         <item name="android:textColor">@android:color/white</item>
         <item name="backgroundTint">@color/colorPrimaryDark</item>

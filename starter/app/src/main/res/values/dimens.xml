@@ -7,7 +7,6 @@
     <dimen name="representative_text_margin">10dp</dimen>
     <dimen name="voter_info_section_top_padding">20dp</dimen>
     <dimen name="voter_info_item_top_padding">5dp</dimen>
-
-    <!-- TODO: Add necessary dimension values -->s
+    <dimen name="representative_image_size">72dp</dimen>
 
 </resources>
