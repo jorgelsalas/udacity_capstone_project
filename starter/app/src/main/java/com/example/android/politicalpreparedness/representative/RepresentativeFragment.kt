@@ -16,6 +16,7 @@ import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.R.string.location_on_required
 import com.example.android.politicalpreparedness.R.string.location_required
 import com.example.android.politicalpreparedness.databinding.FragmentRepresentativeBinding
@@ -102,7 +103,7 @@ class DetailFragment : Fragment(), OnSuccessListener<Location> {
                 representativeViewModel.fetchRepresentatives(address)
             }
             else {
-                toast("Please fill out the address fields")
+                toast(getString(R.string.missing_address_fields_error))
             }
         }
     }
@@ -147,11 +148,9 @@ class DetailFragment : Fragment(), OnSuccessListener<Location> {
     private fun onLocationSettingsResponseError(exception: Exception, resolve:Boolean = true) {
         if (exception is ResolvableApiException && resolve){
             try {
-                toast("Trying to resolve!")
                 exception.startResolutionForResult(activity, REQUEST_TURN_DEVICE_LOCATION_ON)
             }
             catch (sendEx: IntentSender.SendIntentException) {
-                toast("Exception while trying to resolve")
                 Log.d(TAG, "Error getting location settings resolution: " + sendEx.message)
             }
         }
@@ -162,11 +161,11 @@ class DetailFragment : Fragment(), OnSuccessListener<Location> {
 
     private fun onLocationSettingsResponseSuccess(task : Task<LocationSettingsResponse>) {
         if ( task.isSuccessful ) {
-            toast("Location is on!")
+            Log.d(TAG, "Location is on!")
             getLocation()
         }
         else {
-            toast("task failed")
+            Log.w(TAG, "task failed")
         }
     }
 
@@ -189,7 +188,7 @@ class DetailFragment : Fragment(), OnSuccessListener<Location> {
             updateFieldsBasedOnAddress(address)
         }
         else {
-            toast("Unable to acquire last known location")
+            toast(getString(R.string.unable_to_acquire_location_error))
         }
     }
 
