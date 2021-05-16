@@ -68,6 +68,14 @@ class RepresentativeViewModel: ViewModel() {
         }
     }
 
+    fun updateAddress(line1: String, line2: String?, city: String, state: String, zip: String) {
+        val newAddress = Address(line1, line2, city, state, zip)
+
+        if (isValid(newAddress)) {
+            _address.value = newAddress
+        }
+    }
+
     fun updateAddress(address: Address) {
         _address.value = address
     }

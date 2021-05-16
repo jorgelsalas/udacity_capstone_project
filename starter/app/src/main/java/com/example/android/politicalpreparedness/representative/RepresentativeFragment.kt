@@ -24,12 +24,10 @@ import com.example.android.politicalpreparedness.R.string.location_required
 import com.example.android.politicalpreparedness.databinding.FragmentRepresentativeBinding
 import com.example.android.politicalpreparedness.network.models.Address
 import com.example.android.politicalpreparedness.representative.adapter.RepresentativeListAdapter
-import com.example.android.politicalpreparedness.representative.adapter.setNewValue
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
-import kotlinx.android.synthetic.*
 import java.util.Locale
 
 class DetailFragment : Fragment(), OnSuccessListener<Location> {
@@ -218,6 +216,15 @@ class DetailFragment : Fragment(), OnSuccessListener<Location> {
                     Address(address.thoroughfare, address.subThoroughfare, address.locality, address.adminArea, address.postalCode)
                 }
                 .first()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        with(binding) {
+            representativeViewModel.updateAddress(addressLine1.text.toString(),
+                addressLine2.text.toString(), city.text.toString(), state.selectedItem.toString(),
+                zip.text.toString())
+        }
     }
 
     private fun hideKeyboard() {
