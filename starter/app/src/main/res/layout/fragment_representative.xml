@@ -121,7 +121,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:loadingStatus="@{viewModel.loadingRepresentatives}" />
 
-        <!-- TODO: Add visual styling and content -->
         <TextView
             android:id="@+id/list_placeholder"
             android:layout_width="match_parent"
@@ -130,6 +129,7 @@
             android:textAlignment="center"
             android:visibility="gone"
             motion:visibilityMode="ignore"
+            android:text="@string/no_representatives_found_error"
             app:layout_constraintTop_toBottomOf="@id/representative_title"
             app:layout_constraintBottom_toBottomOf="parent" />
 

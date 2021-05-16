@@ -26,6 +26,7 @@
     <string name="location_on_required">Location must be turned on in order to infer address</string>
     <string name="missing_address_fields_error">Please fill out the missing address fields</string>
     <string name="unable_to_acquire_location_error">Unable to acquire last known location. Please try again in a moment</string>
+    <string name="no_representatives_found_error">No representatives found</string>
 
     <!-- TODO: Add necessary string values -->
 
