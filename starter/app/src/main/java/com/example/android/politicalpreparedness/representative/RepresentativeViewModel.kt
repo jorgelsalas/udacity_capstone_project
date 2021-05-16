@@ -24,15 +24,22 @@ class RepresentativeViewModel: ViewModel() {
     val address: LiveData<Address>
         get() = _address
 
+    private val _failedApiRequest = MutableLiveData<Boolean>()
+    val failedApiRequest: LiveData<Boolean>
+        get() = _failedApiRequest
+
     fun fetchRepresentatives(address: Address) {
         viewModelScope.launch {
             _loadingRepresentatives.value = true
+            _failedApiRequest.value = false
 
             try {
                 val (offices, officials) = CivicsApi.retrofitService.getRepresentatives(getAddressForApiRequest(address))
                 _representatives.value = offices.flatMap { office -> office.getRepresentatives(officials) }
             }
             catch (e: Exception) {
+                _representatives.value = listOf()
+                _failedApiRequest.value = true
                 Log.e(RepresentativeViewModel::class.java.simpleName, "Unable to fetch representatives: $e")
             }
 

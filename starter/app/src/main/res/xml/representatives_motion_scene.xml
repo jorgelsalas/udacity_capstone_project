@@ -95,6 +95,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
+        <Constraint
+            android:id="@+id/list_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            app:visibilityMode="ignore"
+            app:layout_constraintTop_toBottomOf="@id/representative_title"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -172,6 +182,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <Constraint
+            android:id="@+id/list_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            app:visibilityMode="ignore"
+            app:layout_constraintTop_toBottomOf="@id/representative_title"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </ConstraintSet>
 

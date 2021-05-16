@@ -10,6 +10,8 @@ import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.core.content.ContextCompat.checkSelfPermission
@@ -22,10 +24,12 @@ import com.example.android.politicalpreparedness.R.string.location_required
 import com.example.android.politicalpreparedness.databinding.FragmentRepresentativeBinding
 import com.example.android.politicalpreparedness.network.models.Address
 import com.example.android.politicalpreparedness.representative.adapter.RepresentativeListAdapter
+import com.example.android.politicalpreparedness.representative.adapter.setNewValue
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
+import kotlinx.android.synthetic.*
 import java.util.Locale
 
 class DetailFragment : Fragment(), OnSuccessListener<Location> {
@@ -64,6 +68,17 @@ class DetailFragment : Fragment(), OnSuccessListener<Location> {
 
         representativeViewModel.address.observe(viewLifecycleOwner, Observer {
             binding.address = it
+        })
+
+        representativeViewModel.failedApiRequest.observe(viewLifecycleOwner, Observer { failedApiRequest ->
+            failedApiRequest?.let {
+                binding.listPlaceholder.visibility = if (failedApiRequest) {
+                    VISIBLE
+                }
+                else {
+                    GONE
+                }
+            }
         })
 
         binding.buttonLocation.setOnClickListener {
