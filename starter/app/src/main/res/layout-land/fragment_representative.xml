@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:motion="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="address"
+            type="com.example.android.politicalpreparedness.network.models.Address" />
+
+        <variable
+            name="viewModel"
+            type="com.example.android.politicalpreparedness.representative.RepresentativeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/div"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.45" />
+
+        <TextView
+            android:id="@+id/search_title"
+            style="@style/FragmentHeaderText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/representative_search"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/div"
+            />
+
+        <EditText
+            android:id="@+id/address_line_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:inputType="textPostalAddress"
+            android:hint="@string/address_line_1"
+            android:text="@{address.line1}"
+            tools:text="Amphitheatre Parkway"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/div"
+            app:layout_constraintTop_toBottomOf="@id/search_title"
+            app:layout_constraintBottom_toTopOf="@id/address_line_2"
+            />
+
+        <EditText
+            android:id="@+id/address_line_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:inputType="textPostalAddress"
+            android:hint="@string/address_line_2"
+            android:text="@{address.line2}"
+            tools:text="1600"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/div"
+            app:layout_constraintTop_toBottomOf="@id/address_line_1"
+            app:layout_constraintBottom_toTopOf="@id/city"
+            />
+
+        <EditText
+            android:id="@+id/city"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:inputType="textPostalAddress"
+            android:hint="@string/city"
+            android:text="@{address.city}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/state"
+            app:layout_constraintTop_toBottomOf="@id/address_line_2"
+            app:layout_constraintBottom_toTopOf="@id/zip"
+            />
+
+        <Spinner
+            android:id="@+id/state"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autofillHints=""
+            android:inputType="textPostalAddress"
+            android:entries="@array/states"
+            app:stateValue="@{address.state}"
+            app:layout_constraintStart_toEndOf="@id/city"
+            app:layout_constraintEnd_toStartOf="@id/div"
+            app:layout_constraintTop_toTopOf="@id/city"
+            app:layout_constraintBottom_toBottomOf="@id/city"/>
+
+        <EditText
+            android:id="@+id/zip"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:inputType="number"
+            android:maxLength="5"
+            android:hint="@string/zip"
+            android:text="@{address.zip}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/div"
+            app:layout_constraintTop_toBottomOf="@id/city"
+            app:layout_constraintBottom_toTopOf="@id/button_search"
+            />
+
+        <Button
+            android:id="@+id/button_search"
+            style="@style/CustomButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/find_my_representatives"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/zip"
+            app:layout_constraintBottom_toTopOf="@id/button_location"
+            app:layout_constraintEnd_toStartOf="@id/div"
+            />
+
+        <Button
+            android:id="@+id/button_location"
+            style="@style/CustomButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/use_my_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_search"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/div"
+            />
+
+        <TextView
+            android:id="@+id/representative_title"
+            style="@style/FragmentHeaderText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_representatives"
+            app:layout_constraintStart_toEndOf="@id/div"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/representatives_recycler"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/representatives_recycler"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/representative_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/div"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ProgressBar
+            android:id="@+id/representatives_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            motion:visibilityMode="ignore"
+            app:loadingStatus="@{viewModel.loadingRepresentatives}"
+            app:layout_constraintTop_toBottomOf="@id/representative_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/div"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/list_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:visibility="gone"
+            motion:visibilityMode="ignore"
+            android:text="@string/no_representatives_found_error"
+            app:layout_constraintTop_toBottomOf="@id/representative_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/div"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
