@@ -40,8 +40,6 @@ class RepresentativeViewModel: ViewModel() {
         }
     }
 
-    //TODO: Create function get address from geo location
-
     fun getAddressFromFields(line1: String, line2: String?, city: String, state: String, zip: String): Address? {
         val newAddress = Address(line1, line2, city, state, zip)
 
