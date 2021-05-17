@@ -31,10 +31,10 @@ import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
 import java.util.Locale
 
-class DetailFragment : Fragment(), OnSuccessListener<Location> {
+class RepresentativeFragment : Fragment(), OnSuccessListener<Location> {
 
     companion object {
-        private val TAG = DetailFragment::class.java.simpleName
+        private val TAG = RepresentativeFragment::class.java.simpleName
         private const val REQUEST_LOCATION_PERMISSION = 1
         private const val REQUEST_TURN_DEVICE_LOCATION_ON = 2
     }
