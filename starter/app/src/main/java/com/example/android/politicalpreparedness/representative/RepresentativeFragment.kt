@@ -8,6 +8,7 @@ import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
+import android.os.Looper
 import android.util.Log
 import android.view.*
 import android.view.View.GONE
@@ -197,12 +198,38 @@ class DetailFragment : Fragment(), OnSuccessListener<Location> {
 
     override fun onSuccess(location: Location?) {
         if (location != null) {
-            val address = geoCodeLocation(location)
-            updateFieldsBasedOnAddress(address)
+            processNewLocation(location)
         }
         else {
             toast(getString(R.string.unable_to_acquire_location_error))
+            requestNewLocationData {
+                processNewLocation(it)
+            }
         }
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun requestNewLocationData(locationListener: (Location) -> Unit) {
+        toast("Request new location")
+        val locationCallback: LocationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult) {
+                toast("Acquired new location")
+                locationListener.invoke(locationResult.lastLocation)
+            }
+        }
+
+        with(LocationRequest()) {
+            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+            interval = 0
+            fastestInterval = 0
+            numUpdates = 1
+            fusedLocationClient.requestLocationUpdates(this, locationCallback, Looper.myLooper())
+        }
+    }
+
+    private fun processNewLocation(location: Location) {
+        val address = geoCodeLocation(location)
+        updateFieldsBasedOnAddress(address)
     }
 
     private fun updateFieldsBasedOnAddress(address: Address) {
