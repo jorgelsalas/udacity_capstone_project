@@ -101,6 +101,8 @@ class RepresentativeFragment : Fragment(), OnSuccessListener<Location> {
             verifyUserHasLocationEnabled()
         }
         else {
+            // TODO: use shouldShowRequestPermissionRationale
+                // TODO: Reformat code in this file: Code -> Reformat Code.
             requestLocationPermission()
         }
     }
