@@ -87,6 +87,18 @@
             app:layout_constraintStart_toStartOf="@id/startMargin"
             app:layout_constraintEnd_toEndOf="@id/endMargin"/>
 
+        <TextView
+            android:id="@+id/empty_saved_elections_message"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/follow_some_elections_to_see_them_here"
+            android:gravity="center"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/saved_elections_header"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/startMargin"
+            app:layout_constraintEnd_toEndOf="@id/endMargin"/>
+
         <ProgressBar
             android:id="@+id/saved_elections_progress_bar"
             android:layout_width="wrap_content"

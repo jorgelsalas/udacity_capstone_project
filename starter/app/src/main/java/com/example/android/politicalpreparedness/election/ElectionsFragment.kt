@@ -3,6 +3,8 @@ package com.example.android.politicalpreparedness.election
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -48,7 +50,18 @@ class ElectionsFragment: Fragment() {
         })
 
         electionsViewModel.savedElections.observe(viewLifecycleOwner, Observer { elections ->
-            elections?.let { savedAdapter.submitList(elections) }
+            elections?.let {
+                savedAdapter.submitList(elections)
+
+                if (elections.isEmpty()) {
+                    binding.savedElectionsRecycler.visibility = GONE
+                    binding.emptySavedElectionsMessage.visibility = VISIBLE
+                }
+                else {
+                    binding.savedElectionsRecycler.visibility = VISIBLE
+                    binding.emptySavedElectionsMessage.visibility = GONE
+                }
+            }
         })
 
         return binding.root

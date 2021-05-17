@@ -27,5 +27,6 @@
     <string name="missing_address_fields_error">Please fill out the missing address fields</string>
     <string name="unable_to_acquire_location_error">Unable to acquire last known location. Please try again in a moment</string>
     <string name="no_representatives_found_error">No representatives found</string>
+    <string name="follow_some_elections_to_see_them_here">Follow some elections to see them here!</string>
 
 </resources>
