@@ -19,10 +19,6 @@ import java.lang.Exception
 
 class VoterInfoViewModel(private val dataSource: ElectionDao) : ViewModel() {
 
-    companion object {
-        private val TAG = VoterInfoViewModel::class.java.simpleName
-    }
-
     private val _voterInfo = MutableLiveData<VoterInfoResponse>()
     val voterInfo: LiveData<VoterInfoResponse>
         get() = _voterInfo
@@ -48,10 +44,6 @@ class VoterInfoViewModel(private val dataSource: ElectionDao) : ViewModel() {
         _electionCurrentlySaved.value = false
         _toggleButtonEnabled.value = false
     }
-
-    /**
-     * Hint: The saved state can be accomplished in multiple ways. It is directly related to how elections are saved/removed from the database.
-     */
 
     fun fetchVoterInfo(electionId: Long, division: Division) {
         viewModelScope.launch {
@@ -129,6 +121,10 @@ class VoterInfoViewModel(private val dataSource: ElectionDao) : ViewModel() {
 
     fun onUrlNavigated() {
         _navigateToUrl.value = null
+    }
+
+    companion object {
+        private val TAG = VoterInfoViewModel::class.java.simpleName
     }
 
 }
